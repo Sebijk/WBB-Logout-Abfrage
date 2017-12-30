@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="de">
+	<category name="wbb.sebijk.logout">
+		<item name="wbb.sebijk.logout.main"><![CDATA[Möchtest du dich wirklich abmelden?]]></item>
+		<item name="wbb.sebijk.logout.yesno"><![CDATA[(OK = Ja | Abbrechen = Nein)]]></item>
+	</category>
+</language>

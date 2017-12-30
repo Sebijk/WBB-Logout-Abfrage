@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE package SYSTEM "http://www.woltlab.com/DTDs/package.dtd">
+<package name="com.sebijk.wbb.logout">
+	<packageinformation>
+		<packageName>Logout Abfrage</packageName>
+		<packageDescription>Fügt eine Abfrage beim Abmelden hinzu.</packageDescription>
+		<isunique>0</isunique>
+		<version>1.0.6</version>
+		<date>2011-12-15</date>
+		<plugin>com.woltlab.wbb</plugin>
+	</packageinformation>
+	
+	<requiredpackages>
+		<requiredpackage minversion="1.1.5">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="2.1.0">com.woltlab.wbb</requiredpackage>
+	</requiredpackages>
+	
+	<authorinformation>
+		<author>Home of the Sebijk.com</author>
+		<authorURL>http://www.sebijk.com</authorURL>
+	</authorinformation>
+	
+	<instructions type="install">
+	  <!--<eventlistener>eventlistener.xml</eventlistener>-->
+		<templatepatch>header.diff</templatepatch>
+		<!--<templates>templates.tar</templates>-->
+		<languages languagecode="de">de.UTF-8.xml</languages>
+		<languages languagecode="en">en.UTF-8.xml</languages>
+		<languages languagecode="de-informal">de-informal.UTF-8.xml</languages>
+	</instructions>
+	
+</package>

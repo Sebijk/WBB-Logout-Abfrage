@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="en">
+	<category name="sebijk.logout">
+		<item name="sebijk.logout.main"><![CDATA[Are you really sure you want to logout?]]></item>
+		<item name="sebijk.logout.yesno"><![CDATA[(OK = Yes | Cancel = No)]]></item>
+	</category>
+</language>

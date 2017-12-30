@@ -1,0 +1,52 @@
+#############################################################################
+Logout Abfrage 1.0 für WBB 1.2
+
+Hack-Ersteller: Sebijk
+
+Beschreibung: Fragt den Benutzer ob er sich wirklich abmelden will.
+#############################################################################
+
+---------------------------------------
+Templates, die geändert werden müssen:
+---------------------------------------
+templates/headinclude.htm
+templates/header_logtin.htm
+templates/main_logtin.htm
+---------------------------------------
+
+
+1. Suche in der templates/headinclude.htm nach:
+---------------------------------------------
+</style>
+
+---------------------------------------------
+Und füge darunter:
+---------------------------------------------
+<script type="text/javascript">
+<!--
+function log_out()
+{
+	if (confirm('Wollen Sie sich wirklich abmelden?'))
+	{ 
+	return true; 
+	}
+	else return false;
+}
+//-->
+</script>
+---------------------------------------------
+ein.
+
+2. Suche in der templates/header_logtin.htm und in der templates/main_logtin.htm nach:
+-------------------------------------------------------------------------------
+href="action.php?action=logout$session"
+-------------------------------------------------------------------------------
+
+füge dahinter:
+---------------------------------------------
+onclick="return log_out()"
+---------------------------------------------
+
+ein.
+
+Viel Spaß mit dem Hack!

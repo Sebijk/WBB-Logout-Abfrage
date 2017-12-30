@@ -1,0 +1,60 @@
+#############################################################################
+Logout Abfrage 1.0 für WBB 2.3
+
+Hack-Ersteller: Sebijk
+
+Beschreibung: Fragt den Benutzer ob er sich wirklich abmelden will,
+bei Internet wird die Webseite bei der Frage in Schwarzweiß gestellt, wie
+ihr das bei vBulletin kennt.
+
+Support: in Home of the Sebijk.de - Forum
+#############################################################################
+---------------------------------------
+Templates, die geändert werden müssen:
+---------------------------------------
+headinclude
+usercbar
+index
+---------------------------------------
+
+
+1. Suche in headinclude nach:
+---------------------------------------------
+$css
+---------------------------------------------
+Und füge darunter:
+---------------------------------------------
+<script type="text/javascript">
+<!--
+function log_out()
+{
+	grayfilter = document.getElementsByTagName("html");
+	grayfilter[0].style.filter = "progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)";
+	if (confirm('Wollen Sie sich wirklich abmelden?\n (OK = Ja | Abbrechen = Nein)'))
+	{ 
+	return true; 
+	}
+	else
+	{
+	  grayfilter[0].style.filter = "";
+	  return false; 
+	  }
+}
+//-->
+</script>
+---------------------------------------------
+ein.
+
+2. Suche in der usercbar UND in index nach:
+-------------------------------------------------------------------------------
+<a href="logout.php?u=$wbbuserdata[userid]{$SID_ARG_2ND}" 
+-------------------------------------------------------------------------------
+
+füge dahinter:
+---------------------------------------------
+onclick="return log_out()"
+---------------------------------------------
+
+ein.
+
+Viel Spaß mit dem Hack!

@@ -1,0 +1,37 @@
+﻿--- header.tpl	Thu Jan 31 13:37:58 2008
++++ header_patched.tpl	Thu Jan 31 13:37:42 2008
+@@ -1,5 +1,25 @@
+ <div id="page">
+ 	<a id="top"></a>
++	{if $this->getUser()->userID != 0}
++	<script type="text/javascript" language="JavaScript">
++	//<![CDATA[
++	function log_out()
++	{
++		grayfilter = document.getElementsByTagName("html");
++		grayfilter[0].style.filter = "progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)";
++		if (confirm('{lang}sebijk.logout.main{/lang}\n {lang}sebijk.logout.yesno{/lang}'))
++		{ 
++		return true; 
++		}
++		else
++		{
++		grayfilter[0].style.filter = "";
++		return false; 
++		}
++	}
++	//]]>
++	</script>
++	{/if}
+ 	<div id="userPanel" class="userPanel">
+ 		{if SHOW_CLOCK}
+ 			<p id="date">
+@@ -12,7 +32,7 @@
+ 		<div id="userMenu">
+ 			<ul>
+ 				{if $this->user->userID != 0}
+-					<li><a href="index.php?action=UserLogout&amp;u={@$this->user->userID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/logoutS.png" alt="" /> <span>{lang}wbb.header.userMenu.logout{/lang}</span></a></li>
++					<li><a href="index.php?action=UserLogout&amp;u={@$this->user->userID}{@SID_ARG_2ND}" onclick="return log_out()"><img src="{@RELATIVE_WCF_DIR}icon/logoutS.png" alt="" /> <span>{lang}wbb.header.userMenu.logout{/lang}</span></a></li>
+ 					<li><a href="index.php?form=UserProfileEdit{@SID_ARG_2ND}"><img src="{@RELATIVE_WBB_DIR}icon/profileS.png" alt="" /> <span>{lang}wbb.header.userMenu.profile{/lang}</span></a></li>
+ 					{if $this->user->getPermission('user.pm.canUsePm')}
+ 						<li {if $this->user->pmUnreadCount} class="new"{/if}><a href="index.php?page=PMList{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/pm{if $this->user->pmUnreadCount}Full{else}Empty{/if}S.png" alt="" /> <span>{lang}wbb.header.userMenu.pm{/lang}</span>{if $this->user->pmUnreadCount} ({#$this->user->pmUnreadCount}){/if}</a>{if $this->user->pmTotalCount >= $this->user->getPermission('user.pm.maxPm')} <span class="pmBoxFull">{lang}wcf.pm.userMenu.mailboxIsFull{/lang}</span>{/if}</li>

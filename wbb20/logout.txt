@@ -1,0 +1,56 @@
+#############################################################################
+Logout Abfrage 1.0 für WBB 2.0
+
+Hack-Ersteller: Sebijk
+
+Beschreibung: Fragt den Benutzer ob er sich wirklich abmelden will.
+#############################################################################
+
+---------------------------------------
+Templates, die geändert werden müssen:
+---------------------------------------
+headinclude
+usercbar
+index_hello
+---------------------------------------
+
+
+1. Suche in headinclude nach:
+---------------------------------------------
+<STYLE TYPE="TEXT/CSS">
+ <!--
+  {css}
+ -->
+</STYLE>
+
+---------------------------------------------
+Und füge darunter:
+---------------------------------------------
+<script type="text/javascript">
+<!--
+function log_out()
+{
+	if (confirm('Wollen Sie sich wirklich abmelden?'))
+	{ 
+	return true; 
+	}
+	else return false;
+}
+//-->
+</script>
+---------------------------------------------
+ein.
+
+2. Suche in der usercbar UND in der index_hello nach:
+-------------------------------------------------------------------------------
+<a href="logout.php?sid=$session[hash]"
+-------------------------------------------------------------------------------
+
+füge dahinter:
+---------------------------------------------
+onclick="return log_out()"
+---------------------------------------------
+
+ein.
+
+Viel Spaß mit dem Hack!

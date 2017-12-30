@@ -1,0 +1,71 @@
+#############################################################################
+Logout Abfrage 1.2 für WBB Lite
+
+Hack-Ersteller: Sebijk
+
+Beschreibung: Fragt den Benutzer ob er sich wirklich abmelden will.
+#############################################################################
+-------------------
+Updates:
+
+1.2
+
+- Schwarzweißfilter JS-Code komplett entfernt.
+- DOCTYPE Änderung entfernt, da es sonst im Internet Explorer Probleme mit Seitendarstellung gibt.
+
+1.1
+
+- Änderung in DOCTYPE hinzugefügt
+
+1.0
+
+- Erste Veröffentlichung
+
+---------------------------------------
+Templates, die geändert werden müssen:
+---------------------------------------
+templates/headinclude.tpl
+templates/usercbar.tpl
+templates/index_hello.tpl
+---------------------------------------
+
+
+1. Suche in der templates/headinclude.tpl nach:
+---------------------------------------------
+<STYLE TYPE="TEXT/CSS">
+ <!--
+  {css}
+ -->
+</STYLE>
+
+---------------------------------------------
+Und füge darunter:
+---------------------------------------------
+<script type="text/javascript" language="JavaScript">
+<!--
+function log_out()
+{
+	if (confirm('Wollen Sie sich wirklich abmelden?'))
+	{ 
+	return true; 
+	}
+	else return false;
+}
+//-->
+</script>
+---------------------------------------------
+ein.
+
+2. Suche in der templates/usercbar.tpl und in der templates/index_hello.tpl nach:
+-------------------------------------------------------------------------------
+<a href="logout.php?sid=$session[hash]"
+-------------------------------------------------------------------------------
+
+füge dahinter:
+---------------------------------------------
+onclick="return log_out()"
+---------------------------------------------
+
+ein.
+
+Viel Spaß mit dem Hack!

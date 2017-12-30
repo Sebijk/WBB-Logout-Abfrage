@@ -1,0 +1,53 @@
+----------------------------------------------------
+Logout Abfrage 1.0.4 für WoltLab Burning Board 3
+Autor: Sebijk ( http://www.sebijk.com )
+----------------------------------------------------
+
+HINWEIS: Da das Templatepatch-System von WoltLab noch
+sehr unausgereift ist, habe ich mich entschlossen,
+kein Template-Patch im Paket zu erstellen, um später
+weitere Probleme zur vermeiden.
+
+Templates, die modifiziert werden müssen: header
+
+1. Installieren Sie das Paket.
+
+2. Suchen Sie in header nach:
+---------------------------------------------
+ <div id="page">
+ 	<a id="top"></a>
+---------------------------------------------
+Und fügen Sie darunter:
+---------------------------------------------
+	{if $this->getUser()->userID != 0}
+	<script type="text/javascript">
+	//<![CDATA[
+	function log_out()
+	{
+		grayfilter = document.getElementsByTagName("html");
+		grayfilter[0].style.filter = "progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)";
+		if (confirm('{lang}sebijk.logout.main{/lang}\n {lang}sebijk.logout.yesno{/lang}'))
+		{ 
+		return true; 
+		}
+		else
+		{
+		grayfilter[0].style.filter = "";
+		return false; 
+		}
+	}
+	//]]>
+	</script>
+	{/if}
+---------------------------------------------
+ein.
+
+Suchen Sie weiter nach:
+
+---------------------------------------------
+<li><a href="index.php?action=UserLogout&amp;u={@$this->user->userID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/logoutS.png" alt="" /> <span>{lang}wbb.header.userMenu.logout{/lang}</span></a></li>
+---------------------------------------------
+und ersetzen Sie es in:
+---------------------------------------------
+<li><a href="index.php?action=UserLogout&amp;u={@$this->user->userID}{@SID_ARG_2ND}" onclick="return log_out()"><img src="{@RELATIVE_WCF_DIR}icon/logoutS.png" alt="" /> <span>{lang}wbb.header.userMenu.logout{/lang}</span></a></li>
+---------------------------------------------
